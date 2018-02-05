@@ -1,49 +1,21 @@
 /* tslint:disable:max-line-length */
 import * as React from 'react'
-import styled, { StyledFunction } from 'styled-components'
+import styled from 'styled-components'
 import Button from '../button/button'
-import { colors, mobileWidth } from '../../theme'
+import { LightLink } from '../link/link'
+import { colors } from '../../theme'
+import { Header } from '../Header/header'
 const Wrapper = styled.div`
-  background-color: ${colors.lighter};
-  padding: 2rem 0;
-`
-const LinkWrapper = styled.div`
   text-align: center;
-  font-size: 2rem;
-  display: flex;
-  margin: 1rem 0;
+  padding-top: 3rem;
 `
-interface SectionProps {
-  hideOnMobile?: boolean
-}
-const section: StyledFunction<
-  SectionProps & React.HTMLProps<HTMLInputElement>
-> =
-  styled.div
-
-const Section = section`
-  flex: 1;
-  text-align: center;
-  ${(props: any) =>
-    props.hideOnMobile
-      ? `
-    @media (max-width: ${mobileWidth}px) {
-      display: none
-    }
-  `
-      : ''};
-`
-
-const DownloadButton = styled.a``
 const WhitePaperFrame = styled.iframe`
-  position: absolute;
   box-shadow: 0 0 0.2rem 0.2rem ${colors.dark};
   height: 0;
   display: block;
-  margin: 0 auto;
-  width: 100vw;
+  margin: 1rem auto;
+  width: 80vw;
   transition: height 400ms, opacity 200ms 200ms, transform 300ms;
-
   opacity: 0;
   transform: scale(0.9);
   &.visible {
@@ -63,20 +35,21 @@ export default class WhitePaper extends React.PureComponent<{
   render() {
     return (
       <Wrapper innerRef={this.props.innerRef}>
-        <h1>Checkout the White Paper</h1>
+        <Header>White Paper</Header>
         <p>Our white paper explains the basics of blah blah</p>
-        <LinkWrapper>
-          <Section hideOnMobile={true}>
-            <Button onClick={this.triggerToggleWhitePaper}>
-              Read the White Paper
-            </Button>
-          </Section>
-          <Section>
-            <DownloadButton download={true} href="/WhitePaper.draft.1.pdf">
-              Download PDF
-            </DownloadButton>
-          </Section>
-        </LinkWrapper>
+        <Button
+          style={{ marginRight: '3rem' }}
+          onClick={this.triggerToggleWhitePaper}
+        >
+          {this.props.showWhitePaper
+            ? /* tslint:disable:quotemark */
+              "Ok, I've seen enough"
+            : /* tslint:enable:quotemark */
+              'Show me the White Paper'}
+        </Button>
+        <LightLink download={true} href="/WhitePaper.draft.1.pdf">
+          Download PDF
+        </LightLink>
         <WhitePaperFrame
           className={this.props.showWhitePaper ? 'visible' : undefined}
           src="/WhitePaper.draft.1.pdf"

@@ -2,9 +2,10 @@ import * as React from 'react'
 import styled from 'styled-components'
 import { colors, mobileWidth } from '../../theme'
 export enum LinksEnum {
+  UP = 'UP',
   WHITE_PAPER = 'White Paper',
   TEAM = 'Team',
-  PLAN = 'Plan',
+  TIME_LINE = 'Time Line',
   ICO = 'ICO'
 }
 const ToggleButton = styled.button`
@@ -52,6 +53,14 @@ const Nav = styled.nav.attrs({
     bottom: 0;
     width: auto;
     left: inherit;
+    a {
+      min-height: 4rem;
+    }
+  }
+  @media (min-width: ${mobileWidth}px) {
+    a {
+      min-width: 4rem;
+    }
   }
   &.active {
     transform: translateY(0);
@@ -59,7 +68,7 @@ const Nav = styled.nav.attrs({
     cursor: default;
     outline: none;
     border-radius: 0;
-    box-shadow: 0 0.2rem 0.5rem 0 rgba(0, 0, 0, 0.75);
+    box-shadow: 0 0rem 0.5rem 0 rgba(0, 0, 0, 0.75);
     display: flex;
     align-content: flex-end;
     box-sizing: border-box;
@@ -133,7 +142,9 @@ export default class Navigation extends React.PureComponent<Props, State> {
         <ToggleButton
           onFocus={this.triggerOnToggle}
           onClick={this.triggerOnToggle}
-        />
+        >
+          <i className="fas fa-bars" />
+        </ToggleButton>
         <Shader
           onClick={this.triggerOnToggle}
           className={[
@@ -147,11 +158,27 @@ export default class Navigation extends React.PureComponent<Props, State> {
           innerRef={this.captureFillerHeight}
           className={this.props.active || this.props.topOfPage ? 'active' : ''}
         >
-          {Object.keys(LinksEnum).map((key: LinksEnum) => (
-            <Link onClick={this.triggerNavigation(LinksEnum[key])} key={key}>
-              {LinksEnum[key]}
-            </Link>
-          ))}
+          {Object.keys(LinksEnum).map(
+            (key: LinksEnum, index: number) =>
+              key === LinksEnum.UP ? (
+                <Link
+                  tabIndex={index + 1}
+                  style={{ flex: 0 }}
+                  onClick={this.triggerNavigation(LinksEnum[key])}
+                  key={key}
+                >
+                  <i className="fas fa-level-up-alt" />&nbsp;
+                </Link>
+              ) : (
+                <Link
+                  tabIndex={index + 1}
+                  onClick={this.triggerNavigation(LinksEnum[key])}
+                  key={key}
+                >
+                  {LinksEnum[key]}
+                </Link>
+              )
+          )}
         </Nav>
       </span>
     )

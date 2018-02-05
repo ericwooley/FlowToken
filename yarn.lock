@@ -4554,6 +4554,12 @@ react-error-overlay@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/react-error-overlay/-/react-error-overlay-3.0.0.tgz#c2bc8f4d91f1375b3dad6d75265d51cd5eeaf655"
 
+react-event-timeline@^1.4.1:
+  version "1.4.1"
+  resolved "https://registry.yarnpkg.com/react-event-timeline/-/react-event-timeline-1.4.1.tgz#8c4c058e71e249c65725bdfcff3297fb6e7c14a4"
+  dependencies:
+    prop-types "^15.6.0"
+
 react-particles-js@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/react-particles-js/-/react-particles-js-2.1.0.tgz#e28afbafefa33c225b2ecdc014f2e40bc4d97ea5"
@@ -5343,6 +5349,26 @@ style-loader@0.19.0:
   dependencies:
     loader-utils "^1.0.2"
     schema-utils "^0.3.0"
+
+styled-components-ts@^0.0.8:
+  version "0.0.8"
+  resolved "https://registry.yarnpkg.com/styled-components-ts/-/styled-components-ts-0.0.8.tgz#f445c4f5e6120e7429738cc4163e3c7d1514d9a9"
+  dependencies:
+    react "^16.2.0"
+    styled-components "^2.4.0"
+
+styled-components@^2.4.0:
+  version "2.4.0"
+  resolved "https://registry.yarnpkg.com/styled-components/-/styled-components-2.4.0.tgz#086d0fd483d54638837fca3ea546a030b94adf75"
+  dependencies:
+    buffer "^5.0.3"
+    css-to-react-native "^2.0.3"
+    fbjs "^0.8.9"
+    hoist-non-react-statics "^1.2.0"
+    is-plain-object "^2.0.1"
+    prop-types "^15.5.4"
+    stylis "^3.4.0"
+    supports-color "^3.2.3"
 
 styled-components@^3.1.5:
   version "3.1.5"

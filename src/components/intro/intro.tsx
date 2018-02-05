@@ -1,37 +1,27 @@
 import * as React from 'react'
-import styled, { StyledFunction } from 'styled-components'
+import styled from 'styled-components'
 import { colors, mobileWidth } from '../../theme'
 import Logo from './logo45'
-interface WrapperProps {
-  navHeight: number
-}
 
 const LogoWrapper = styled.div`
   position: absolute;
-  transform: scale(3);
-  bottom: -2rem;
+  transform: scale(2);
+  bottom: -3.4rem;
   transform-origin: bottom;
   @media (max-width: ${mobileWidth}px) {
-    transform: scale(2);
+    transform: scale(1.5);
   }
 `
-const wrapper: StyledFunction<
-  WrapperProps & React.HTMLProps<HTMLInputElement>
-> =
-  styled.div
 
-const Static = wrapper`
-  background: linear-gradient(
-    to bottom, 
-    black 0%,
-    ${colors.main} 100%
-  );
-  height: calc(100vh - ${props => props.navHeight}px);
+const Static = styled.div`
+  pointer-events: none;
+  background: transparent;
+  position: relative;
+  height: 100vh;
   text-align: center;
   color: ${colors.lightAccent};
   display: flex;
-  align-items: center;
-  flex-direction: column;
+  justify-content: center;
 `
 const Header = styled.h1`
   color: ${colors.light};
@@ -42,33 +32,10 @@ const Header = styled.h1`
   right: 0;
   transform: translateY(-50%);
 `
-export default class IntroStatic extends React.PureComponent<{
-  navHeight: number
-}> {
-  ParticleComponent: any
-  ParticleConfig: any
-  async componentWillMount() {
-    this.ParticleComponent = (await import(/* webpackChunkName: "particles" */ 'react-particles-js')).default
-    this.ParticleConfig = (await import(/* webpackChunkName: "particles" */ './particlesjs-config')).default
-    this.forceUpdate()
-  }
+export default class IntroStatic extends React.PureComponent<{}> {
   render() {
-    const ParticleComponent = this.ParticleComponent
-    console.log(ParticleComponent)
     return (
-      <Static navHeight={this.props.navHeight}>
-        {ParticleComponent && (
-          <div style={{ width: '100%' }}>
-            <ParticleComponent
-              params={this.ParticleConfig}
-              style={{
-                flex: 1,
-                width: '100%'
-              }}
-            />
-          </div>
-        )}
-
+      <Static>
         <LogoWrapper>
           <Logo />
           <Header>Flow Token</Header>

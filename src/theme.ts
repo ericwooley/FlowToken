@@ -11,7 +11,8 @@ const extendedColors = {
   .lighten(5)
   .toString(),
   lightDarkened: tinyColor(baseColors.light).darken(10).toString(),
-  mainDarkend: tinyColor(baseColors.main).darken(10).toString(),
+  lightDarkenedMore: tinyColor(baseColors.light).darken(20).toString(),
+  mainDarkened: tinyColor(baseColors.main).darken(15).toString(),
   lightAccentDarkened: tinyColor(baseColors.lightAccent).darken(10).toString(),
   darkAccentLightened:  tinyColor(baseColors.darkAccent)
   .lighten(10)
