@@ -11,7 +11,12 @@
     -->
   <link rel="manifest" href="%PUBLIC_URL%/manifest.json">
   <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">
-
+  <link rel="apple-touch-icon" sizes="180x180" href="%PUBLIC_URL%/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="%PUBLIC_URL%/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="%PUBLIC_URL%/favicon-16x16.png">
+  <link rel="mask-icon" href="%PUBLIC_URL%/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#2d89ef">
+  <meta name="theme-color" content="#ffffff">
   <!--
       Notice the use of %PUBLIC_URL% in the tags above.
       It will be replaced with the URL of the `public` folder during the build.
@@ -21,7 +26,7 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
-  <title>React App</title>
+  <title>Flow Token</title>
   <style>
     /* http://meyerweb.com/eric/tools/css/reset/ 
       v2.0 | 20110126
@@ -133,10 +138,20 @@
       display: block;
     }
 
-    body {
-      line-height: 1;
-      font-family: 'Roboto', Arial, serif;
-      font-size: 62.5%;
+
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      font-family: 'Rokkitt', serif;
+    }
+
+    p,
+    div {
+      font-family: 'Ubuntu', sans-serif;
     }
 
     ol,
@@ -162,12 +177,30 @@
       border-spacing: 0;
     }
 
+    html {
+      font-size: 62.5%;
+    }
+
+    body {
+      background-color: #202930;
+      line-height: 1;
+      /* font-family: 'Roboto', Arial, serisf; */
+      /* font-family: 'Ubuntu', sans-serif; */
+      /* font-family: 'Nanum Myeongjo', serif; */
+      font-size: 16px;
+      /* px fallback */
+      font-size: 1.6rem;
+      /* default font-size for document */
+      line-height: 1.5;
+      /* a nice line-height */
+    }
+
     h1 {
-      font-size: 2.5rem;
+      font-size: 3.5rem;
     }
 
     h2 {
-      font-size: 2rem;
+      font-size: 2.5rem;
     }
   </style>
 </head>
@@ -190,7 +223,8 @@
     -->
 
 </body>
-<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Roboto">
-<link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+<!-- <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Roboto"> -->
+<link href="https://fonts.googleapis.com/css?family=Rokkitt|Ubuntu" rel="stylesheet">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
 </html>

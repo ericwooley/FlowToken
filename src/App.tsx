@@ -11,18 +11,20 @@ import { IState } from './reducers/'
 import Intro from './components/intro/intro'
 import Particles from './components/intro/particles'
 import './App.css'
-
+import TimeLine from './components/timeline/timeline'
+import MemberList from './components/TeamMembers/member_list'
+import Ico from './components/ico/ico'
 const MainStyles = styled.main`
   *:focus {
     outline: none;
-    border-bottom: 0.1rem solid ${colors.lightAccent};
+    border-bottom: 0.3rem solid ${colors.lightAccent};
   }
 `
 
-const Section = styled.div`
-  min-height: 100vh;
+const Section: any = styled.div`
+  min-height: calc(40vh - ${(props: any) => props.navHeight || 0}px);
   padding: 3rem 2rem;
-  box-sizing: content-box;
+  box-sizing: border-box;
   p {
     text-align: left;
     font-size: 1.6rem;
@@ -38,6 +40,7 @@ const Section = styled.div`
   button {
     margin: 1rem 0;
   }
+  box-shadow: 0 0 0.4rem 0.3rem rgba(0, 0, 0, 0.3);
 `
 
 const SectionLight = styled(Section)`
@@ -58,6 +61,7 @@ const SectionDark = styled(Section)`
     ${colors.mainDarkened} 130%
   );
   color: ${colors.light};
+  /* box-shadow: 0 0 0.4rem 0.3rem rgba(0, 0, 0, 0.3); */
 `
 
 interface Props {
@@ -78,7 +82,7 @@ class App extends React.Component<Props, { navHeight: number }> {
     this.props.toggleMenu(false)
     if (section) {
       scrollToElement(section, {
-        offset: 0 - this.state.navHeight,
+        offset: 5 - this.state.navHeight,
         ease: 'inSine',
         duration: 400
       })
@@ -101,31 +105,37 @@ class App extends React.Component<Props, { navHeight: number }> {
         )} */}
         <Particles />
         <Intro />
-        <SectionLight>
-          <WhitePaper
-            key={LinksEnum.WHITE_PAPER}
-            innerRef={this.captureRef(LinksEnum.WHITE_PAPER)}
-          >
+        <SectionLight
+          key={LinksEnum.WHITE_PAPER}
+          navHeight={this.state.navHeight}
+        >
+          <WhitePaper innerRef={this.captureRef(LinksEnum.WHITE_PAPER)}>
             <h1>White Paper</h1>
           </WhitePaper>
         </SectionLight>
         <SectionDark
+          navHeight={this.state.navHeight}
           key={LinksEnum.TEAM}
           innerRef={this.captureRef(LinksEnum.TEAM)}
         >
-          <h1>TEAM</h1>
+          <h1>Meet the Team</h1>
+          <MemberList />
         </SectionDark>
         <SectionLight
+          navHeight={this.state.navHeight}
           key={LinksEnum.TIME_LINE}
           innerRef={this.captureRef(LinksEnum.TIME_LINE)}
         >
           <h1>Time Line</h1>
+          <TimeLine />
         </SectionLight>
         <SectionDark
+          navHeight={this.state.navHeight}
           key={LinksEnum.ICO}
           innerRef={this.captureRef(LinksEnum.ICO)}
         >
           <h1>ICO</h1>
+          <Ico />
         </SectionDark>
         <Nav onNavHeight={this.captureNavHeight} onNavigation={this.scrollTo} />
       </MainStyles>

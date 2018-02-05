@@ -7,6 +7,7 @@ const baseColors = {
   dark: '#202930'
 }
 const extendedColors = {
+  lightAccentTransparent: tinyColor(baseColors.lightAccent).setAlpha(0.2).toString(),
   lighter: tinyColor(baseColors.light)
   .lighten(5)
   .toString(),

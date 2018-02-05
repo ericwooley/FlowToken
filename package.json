@@ -2,8 +2,12 @@
   "name": "flow-coin",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://ericwooley.github.io/FlowToken",
   "dependencies": {
+    "gh-pages": "^1.1.0",
+    "moment": "^2.20.1",
     "react": "^16.2.0",
+    "react-count-down": "^1.1.0",
     "react-dom": "^16.2.0",
     "react-event-timeline": "^1.4.1",
     "react-particles-js": "^2.1.0",
@@ -18,8 +22,10 @@
     "typed-redux-reducers": "^0.0.4"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts-ts start",
-    "build": "react-scripts-ts build && react-snapshot",
+    "build": "react-scripts-ts build",
     "test": "react-scripts-ts test --env=jsdom",
     "eject": "react-scripts-ts eject"
   },

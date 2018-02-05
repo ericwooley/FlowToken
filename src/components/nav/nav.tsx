@@ -1,6 +1,7 @@
 import * as React from 'react'
 import styled from 'styled-components'
 import { colors, mobileWidth } from '../../theme'
+import Icon from '../icon/icon'
 export enum LinksEnum {
   UP = 'UP',
   WHITE_PAPER = 'White Paper',
@@ -9,6 +10,11 @@ export enum LinksEnum {
   ICO = 'ICO'
 }
 const ToggleButton = styled.button`
+  @media (min-width: ${mobileWidth}px) {
+    display: none;
+  }
+  background-color: ${colors.darkAccent};
+  color: ${colors.light};
   height: 40px;
   width: 40px;
   position: fixed;
@@ -17,6 +23,7 @@ const ToggleButton = styled.button`
   border-radius: 100%;
   box-shadow: 0 0rem 0.3rem 0 rgba(0, 0, 0, 0.75);
   cursor: pointer;
+  border: 0;
 `
 const Shader = styled.span`
   position: fixed;
@@ -58,6 +65,7 @@ const Nav = styled.nav.attrs({
     }
   }
   @media (min-width: ${mobileWidth}px) {
+    transform: translateY(0);
     a {
       min-width: 4rem;
     }
@@ -89,7 +97,8 @@ const Link = styled.a.attrs({
 })`
   color: ${colors.light};
   text-decoration: none;
-  display: inline-block;
+  display: flex;
+  justify-content: center;
   text-align: center;
   flex: 1;
   font-size: 1.5rem;
@@ -143,7 +152,7 @@ export default class Navigation extends React.PureComponent<Props, State> {
           onFocus={this.triggerOnToggle}
           onClick={this.triggerOnToggle}
         >
-          <i className="fas fa-bars" />
+          <Icon>menu</Icon>
         </ToggleButton>
         <Shader
           onClick={this.triggerOnToggle}
@@ -167,7 +176,9 @@ export default class Navigation extends React.PureComponent<Props, State> {
                   onClick={this.triggerNavigation(LinksEnum[key])}
                   key={key}
                 >
-                  <i className="fas fa-level-up-alt" />&nbsp;
+                  <Icon style={{ transform: 'rotate(90deg) scaleY(-1)' }}>
+                    keyboard_return
+                  </Icon>
                 </Link>
               ) : (
                 <Link

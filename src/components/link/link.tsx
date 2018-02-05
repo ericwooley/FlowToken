@@ -12,3 +12,9 @@ export const LightLink = styled.a`
     
   }
 `
+export const DarkLink = styled(LightLink)`
+  color: ${colors.darkAccentDarkened};
+  &:hover {
+    border-bottom: 0.2rem solid ${colors.darkAccentDarkened};
+  }
+`

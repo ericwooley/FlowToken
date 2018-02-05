@@ -3,11 +3,7 @@ import styled from 'styled-components'
 import { colors } from '../../theme'
 
 const Static = styled.div`
-  background: linear-gradient(
-    to bottom,
-    ${colors.dark} 0%,
-    ${colors.main} 100%
-  );
+  background: linear-gradient(to top, ${colors.main} 20%, ${colors.dark} 110%);
   color: ${colors.lightAccent};
   display: flex;
   align-items: center;
@@ -23,8 +19,8 @@ export default class IntroStatic extends React.PureComponent<{}> {
   ParticleComponent: any
   ParticleConfig: any
   async componentWillMount() {
-    this.ParticleComponent = (await import(/* webpackChunkName: "particles" */ 'react-particles-js')).default
-    this.ParticleConfig = (await import(/* webpackChunkName: "particles" */ './particlesjs-config')).default
+    this.ParticleComponent = (await import('./particles-proxy')).default
+    this.ParticleConfig = (await import('./particlesjs-config')).default
     this.forceUpdate()
   }
   render() {
